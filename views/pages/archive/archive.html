@@ -1,0 +1,18 @@
+<div ng-controller="IndexPageController" class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <input class="input-lg form-control fg-input" type="text" ng-model="query" placeholder="Search my to dos"/>
+            <ul style="list-style: none;">
+                <li ng-repeat="todo in activeList | filter: query | orderBy: '-updatedAt' track by $index">
+                    <todo-item todo="todo" update="update(todo)"></todo-item>
+                </li>
+            </ul>
+            <hr>
+            <ul style="list-style: none;">
+                <li ng-repeat="archiveTodo in archiveList | filter: query | orderBy: '-updatedAt' track by $index">
+                    <archive-item todo="archiveTodo" undo="undo(archiveTodo)"></archive-item>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

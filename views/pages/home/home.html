@@ -1,0 +1,28 @@
+<div ng-controller="IndexPageController" class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <input class="input-lg form-control fg-input" type="text" ng-model="query" placeholder="Search my to dos"/>
+            <ul style="list-style: none;">
+                <li ng-repeat="todo in activeList | filter: query | orderBy: '-updatedAt' track by $index">
+                    <todo-item todo="todo" update="update(todo)"></todo-item>
+                </li>
+            </ul>
+            <hr>
+            <ul style="list-style: none;">
+                <li ng-repeat="todo in doneList | filter: query | orderBy: '-updatedAt' track by $index">
+                    <todo-item todo="todo" update="update(todo)"></todo-item>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+
+            <form ng-submit="submit()">
+                <input type="text" ng-model="newItem" placeholder="Add some to do"
+                       class="input-lg form-control fg-input"/>
+                <br/>
+                <button type="submit" class="btn btn-default">Add new to do</button>
+            </form>
+        </div>
+    </div>
+
+</div>
